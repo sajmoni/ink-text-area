@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`TextArea - cursorPosition 1`] = `"Hel[7ml[27mo world"`;
+
+exports[`TextArea - cursorPosition 2`] = `"He[7ml[27mlo world"`;
+
+exports[`TextArea 1`] = `"[7mH[27mello world"`;
