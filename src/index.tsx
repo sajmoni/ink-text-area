@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { useInput, Text } from "ink";
+import { useInput, Text, type TextProps } from "ink";
 import React, { useState, useEffect } from "react";
 import { insertString } from "tiny-toolkit";
 
@@ -20,6 +20,8 @@ export const renderCursor = (string: string, cursor: number): string => {
   }
 };
 
+// Expose this one separately from the TextArea component
+// You might want to control the keyboard separately
 export const useCursor = ({
   value,
   setValue,
@@ -37,11 +39,9 @@ export const useCursor = ({
   useInput(
     (input, key) => {
       if (key.return || input === "\r") {
-        // NO-OP
-        // TODO: Enable again later
-        // const newValue = insertString(value, '\n', cursor)
-        // setValue(newValue)
-        // setCursor(cursor + input.length)
+        const newValue = insertString(value, "\n", cursor);
+        setValue(newValue);
+        setCursor(cursor + input.length);
       }
       if (key.rightArrow || input === "OC") {
         if (value.length > cursor) {
@@ -52,7 +52,9 @@ export const useCursor = ({
           setCursor(cursor - 1);
         }
       } else if (key.downArrow || input === "OB") {
+        // TODO: Go one row down
       } else if (key.upArrow || input === "OA") {
+        // TODO: Go one row up
       } else if (key.delete || key.backspace) {
         if (cursor > 0) {
           setValue(
@@ -88,17 +90,23 @@ const TextArea = ({
   value,
   setValue,
   focus,
-  cursorPosition = 0,
+  cursorPosition,
+  textProps,
 }: {
   value: string;
   setValue: (value: string) => void;
   focus: boolean;
   cursorPosition?: number | undefined;
+  textProps?: TextProps;
 }) => {
-  const valueWithCursor = useCursor({ value, setValue, focus, cursorPosition });
+  const valueWithCursor = useCursor({
+    value,
+    setValue,
+    focus,
+    cursorPosition: cursorPosition ?? value.length,
+  });
 
-  // TODO: Expose text options prop
-  return <Text>{valueWithCursor}</Text>;
+  return <Text {...textProps}>{valueWithCursor}</Text>;
 };
 
 export default TextArea;

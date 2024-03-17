@@ -4,7 +4,7 @@ import { test, expect } from "vitest";
 import chalk from "chalk";
 import { setTimeout } from "timers/promises";
 
-import TextArea, { renderCursor } from "./src";
+import TextArea, { renderCursor } from "./src/index.js";
 
 const RETURN = "\r";
 const ARROW_UP = "\u001B[A";
@@ -14,15 +14,16 @@ const ARROW_LEFT = "\u001B[D";
 const BACKSPACE = "\u007F";
 
 const waitAndAssert = async (lastFrame: () => string | undefined) => {
-  await setTimeout(200);
+  await setTimeout(500);
   expect(lastFrame()).toMatchSnapshot();
 };
 
-test("TextArea", async () => {
+test.only("TextArea", async () => {
   const { lastFrame } = render(
     <TextArea value={"Hello world"} setValue={() => {}} focus />
   );
   await waitAndAssert(lastFrame);
+  console.log(lastFrame());
 });
 
 test("TextArea - cursorPosition", async () => {
@@ -36,6 +37,7 @@ test("TextArea - cursorPosition", async () => {
   );
   await waitAndAssert(lastFrame);
   console.log(lastFrame());
+  // Needs this issue to be merged: https://github.com/vadimdemedes/ink-testing-library/issues/25
   stdin.write(ARROW_LEFT);
 
   await waitAndAssert(lastFrame);
