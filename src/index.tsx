@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { useInput, Text, type TextProps } from "ink";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { insertString } from "tiny-toolkit";
 
 export const renderCursor = (string: string, cursor: number): string => {

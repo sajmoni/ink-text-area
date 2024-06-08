@@ -3,7 +3,7 @@ import { render } from "ink";
 import React from "react";
 import process from "node:process";
 
-import TextArea from "./src";
+import TextArea from "./src/index.js";
 
 export const clearConsole = () => {
   process.stdout.write(

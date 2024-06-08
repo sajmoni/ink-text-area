@@ -1,4 +1,3 @@
-import React from "react";
 import { render } from "ink-testing-library";
 import { test, expect } from "vitest";
 import chalk from "chalk";
@@ -6,12 +5,12 @@ import { setTimeout } from "timers/promises";
 
 import TextArea, { renderCursor } from "./src/index.js";
 
-const RETURN = "\r";
-const ARROW_UP = "\u001B[A";
-const ARROW_DOWN = "\u001B[B";
-const ARROW_RIGHT = "\u001B[C";
+// const RETURN = "\r";
+// const ARROW_UP = "\u001B[A";
+// const ARROW_DOWN = "\u001B[B";
+// const ARROW_RIGHT = "\u001B[C";
 const ARROW_LEFT = "\u001B[D";
-const BACKSPACE = "\u007F";
+// const BACKSPACE = "\u007F";
 
 const waitAndAssert = async (lastFrame: () => string | undefined) => {
   await setTimeout(500);
