@@ -2,7 +2,12 @@
   "name": "ink-text-area",
   "version": "0.0.0",
   "description": "Multi-line text area for ink",
-  "keywords": [],
+  "keywords": [
+    "ink",
+    "react",
+    "textarea",
+    "text-area"
+  ],
   "homepage": "https://github.com/sajmoni/ink-text-area#readme",
   "bugs": {
     "url": "https://github.com/sajmoni/ink-text-area/issues"
@@ -14,8 +19,7 @@
   "license": "MIT",
   "author": "sajmoni <simon.lagos.sallhed@gmail.com>",
   "type": "module",
-  "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
     "dist/"
   ],
@@ -42,6 +46,6 @@
     "vitest": "1.6.0"
   },
   "engines": {
-    "node": ">20"
+    "node": ">=22"
   }
 }
