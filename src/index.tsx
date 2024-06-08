@@ -3,7 +3,7 @@ import { useInput, Text, type TextProps } from 'ink'
 import { useState, useEffect } from 'react'
 import { insertString } from 'tiny-toolkit'
 
-export const renderCursor = (string: string, cursor: number): string => {
+export function renderCursor(string: string, cursor: number): string {
   if (cursor <= string.length - 1) {
     // IF the cursor is on a new line, the new line needs to be kept in the string
     if (string.charAt(cursor) === '\n') {
@@ -22,7 +22,7 @@ export const renderCursor = (string: string, cursor: number): string => {
 
 // Expose this one separately from the TextArea component
 // You might want to control the keyboard separately
-export const useCursor = ({
+export function useCursor({
   value,
   setValue,
   focus,
@@ -32,7 +32,7 @@ export const useCursor = ({
   setValue: (value: string) => void
   focus: boolean
   cursorPosition: number
-}) => {
+}) {
   const [cursor, setCursor] = useState(cursorPosition)
   const [valueWithCursor, setValueWithCursor] = useState('')
 
@@ -86,7 +86,7 @@ export const useCursor = ({
   return valueWithCursor
 }
 
-const TextArea = ({
+export default function TextArea({
   value,
   setValue,
   focus,
@@ -98,7 +98,7 @@ const TextArea = ({
   focus: boolean
   cursorPosition?: number | undefined
   textProps?: TextProps
-}) => {
+}) {
   const valueWithCursor = useCursor({
     value,
     setValue,
@@ -108,5 +108,3 @@ const TextArea = ({
 
   return <Text {...textProps}>{valueWithCursor}</Text>
 }
-
-export default TextArea

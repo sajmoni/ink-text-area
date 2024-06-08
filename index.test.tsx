@@ -26,7 +26,6 @@ test('TextArea', async () => {
     />,
   )
   await waitAndAssert(lastFrame)
-  console.log(lastFrame())
 })
 
 test('TextArea - cursorPosition', async () => {
@@ -39,11 +38,9 @@ test('TextArea - cursorPosition', async () => {
     />,
   )
   await waitAndAssert(lastFrame)
-  console.log(lastFrame())
   stdin.write(ARROW_LEFT)
 
   await waitAndAssert(lastFrame)
-  console.log(lastFrame())
 })
 
 test('renderCursor', () => {
