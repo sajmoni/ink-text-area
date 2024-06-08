@@ -1,17 +1,12 @@
 # ink-text-area
 
-Multi-line text area for ink
+> Multi-line text area for ink
 
-## Requirements
+## :sparkles: Features
 
-- Support for meta keys
+- Multi-line text
 - Placeholder
-- Only controlled component
-- Tab completion for placeholder
-
-## Requirements - cursor:
-
+- Advanced keyboard input
+- Hold shift to highlight multiple characters
 - Copy and paste
-- Use `chalk.inverse` for indicating where the cursor is
 - Possible to disable / hide if not focused
-- Hold shift to highlight multiple chars??
