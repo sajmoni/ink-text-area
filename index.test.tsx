@@ -17,7 +17,7 @@ const waitAndAssert = async (lastFrame: () => string | undefined) => {
   expect(lastFrame()).toMatchSnapshot();
 };
 
-test.only("TextArea", async () => {
+test("TextArea", async () => {
   const { lastFrame } = render(
     <TextArea value={"Hello world"} setValue={() => {}} focus />
   );
@@ -36,7 +36,6 @@ test("TextArea - cursorPosition", async () => {
   );
   await waitAndAssert(lastFrame);
   console.log(lastFrame());
-  // Needs this issue to be merged: https://github.com/vadimdemedes/ink-testing-library/issues/25
   stdin.write(ARROW_LEFT);
 
   await waitAndAssert(lastFrame);
