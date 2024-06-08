@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "node16",
-    "moduleResolution": "node16"
+    "moduleResolution": "node16",
   },
-  "include": ["src", "app.tsx", "index.test.tsx"]
+  "include": ["src", "app.tsx", "index.test.tsx"],
 }
